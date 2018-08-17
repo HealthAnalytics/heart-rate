@@ -22,9 +22,10 @@ for img in reader:
 
 f, axarr = plt.subplots(3, sharex=True, sharey=False)
 f.suptitle('Heart Beat Color Channels')
-axarr[0].plot(time, mean_r, '-r')
-axarr[1].plot(time, mean_g, '-g')
-axarr[2].plot(time, mean_b, '-b')
+axarr[0].plot(time, mean_r, '-r'), axarr[0].grid()
+axarr[1].plot(time, mean_g, '-g'), axarr[1].grid()
+axarr[2].plot(time, mean_b, '-b'), axarr[2].grid()
+
 
 
 yf = np.fft.fft(mean_r-np.mean(mean_r))
@@ -32,7 +33,9 @@ xf = np.linspace(0.0, 1.0/(2.0*sample_time), n_frames/2)*60
 
 fig, ax = plt.subplots()
 ax.plot(xf[:n_frames//2], 2.0/n_frames * np.abs(yf[:n_frames//2]))
+plt.grid()
 plt.show()
+
 
 
 
